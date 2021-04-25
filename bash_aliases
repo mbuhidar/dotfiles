@@ -29,3 +29,9 @@ alias ....='cd ../../../../'
 alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
+
+
+# Other aliases added via echo on command line
+# Added via command like $ echo "alias gs='git status'" >> .bash_aliases
+alias h=history
+alias gs='git status'
