@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_bak             # old dotfiles backup directory
-files=".bashrc .bash_aliases"    # list of files/folders to symlink in homedir
+files=".bashrc .bash_aliases .vimrc"    # list of files/folders to symlink in homedir
 
 ##########
 
