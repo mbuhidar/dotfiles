@@ -1,11 +1,25 @@
 "---------------------
 " Basic editing config
 "---------------------
+
 set nocompatible          " get rid of Vi compatibility mode. SET FIRST!
+
+syntax enable             " enable syntax highlighting (previously syntax on).
+
+set noerrorbells          "   
+set tabstop=4             " tab spacing
+set softtabstop=4         " unify
+set shiftwidth=4          " indent/outdent by 4 columns
+set expandtab             " use spaces instead of tabs
+
+
+
+
+
+
+
 filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 set t_Co=256              " enable 256-color mode.
-syntax enable             " enable syntax highlighting (previously syntax on).
-"" colorscheme desert        " set colorscheme
 "" set number                " show line numbers
 "" set laststatus=2          " last window always has a statusline
 filetype indent on        " activates indenting for files
@@ -14,11 +28,7 @@ set incsearch             " But do highlight as you type your search.
 set ignorecase            " Make searches case-insensitive.
 set ruler                 " Always show info along bottom.
 set autoindent            " auto-indent
-set tabstop=4             " tab spacing
-set softtabstop=4         " unify
-set shiftwidth=4          " indent/outdent by 4 columns
 set shiftround            " always indent/outdent to the nearest tabstop
-set expandtab             " use spaces instead of tabs
 set smarttab              " use tabs at the start of a line, spaces elsewhere
 set nowrap                " don't wrap text
 
@@ -41,10 +51,6 @@ set hidden " allow auto-hiding of edited buffers
 set history=8192 " more history
 set nojoinspaces " suppress inserting two spaces between sentences
 " use 4 spaces instead of tabs during formatting
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
 " smart case-sensitive search
 set ignorecase
 set smartcase
