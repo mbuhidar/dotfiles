@@ -1,60 +1,190 @@
-"---------------------
-" Basic editing config
-"---------------------
+"------------------------------------------------------------
+" Features:
+"
+" These options and commands enable some very useful features in Vim that
+" no user should live without.
 
-set nocompatible          " get rid of Vi compatibility mode. SET FIRST!
+" Set 'nocompatible' to ward off unexpected things that your distro might
+" have made, as well as sanely reset options when re-sourcing .vimrc
+set nocompatible
 
-syntax enable             " enable syntax highlighting (previously syntax on).
+" Attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
+if has('filetype')
+  filetype indent plugin on
+endif
 
-set noerrorbells          "   
-set tabstop=4             " tab spacing
-set softtabstop=4         " unify
-set shiftwidth=4          " indent/outdent by 4 columns
-set expandtab             " use spaces instead of tabs
+" Enable syntax highlighting
+if has('syntax')
+  syntax on
+endif
 
+"------------------------------------------------------------
+" Must have options:
+"
+" Vim with default settings does not allow easy switching between multiple files
+" in the same editor window. Users can use multiple split windows or multiple
+" tab pages to edit multiple files, but it is still best to enable an option to
+" allow easier switching between files.
+"
+" One such option is the 'hidden' option, which allows you to re-use the same
+" window and switch from an unsaved buffer without saving it first. Also allows
+" you to keep an undo history for multiple files when re-using the same window
+" in this way. Note that using persistent undo also lets you undo in multiple
+" files even in the same window, but is less efficient and is actually designed
+" for keeping undo history after closing Vim entirely. Vim will complain if you
+" try to quit without saving, and swap files will keep you safe if your computer
+" crashes.
+set hidden
 
+" Note that not everyone likes working this way with the hidden option.
+" Alternatives include using tabs or split windows instead of re-using the same
+" window as mentioned above, and/or either of the following options:
+" set confirm
+" set autowriteall
 
+" Better command-line completion
+set wildmenu
 
+" Show partial commands in the last line of the screen
+set showcmd
 
+" Highlight as you type a search phrase
+set incsearch
 
+" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
+" mapping of <C-L> below)
+" set hlsearch
 
-filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
-set t_Co=256              " enable 256-color mode.
-"" set number                " show line numbers
-"" set laststatus=2          " last window always has a statusline
-filetype indent on        " activates indenting for files
-set nohlsearch            " Don't continue to highlight searched phrases.
-set incsearch             " But do highlight as you type your search.
-set ignorecase            " Make searches case-insensitive.
-set ruler                 " Always show info along bottom.
-set autoindent            " auto-indent
-set shiftround            " always indent/outdent to the nearest tabstop
-set smarttab              " use tabs at the start of a line, spaces elsewhere
-set nowrap                " don't wrap text
+" Don't continue to highlight searched phrases.  Alternate to hlsearch above.
+set nohlsearch
 
+" Modelines have historically been a source of security vulnerabilities. As
+" such, it may be a good idea to disable them and use the securemodelines
+" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
+" set nomodeline
 
-"" set shortmess+=I " disable startup message
-set nu " number lines
-set rnu " relative line numbering
-set incsearch " incremental search (as string is being typed)
-set hls " highlight search
-set listchars=tab:>>,nbsp:~ " set list to see tabs and non-breakable spaces
-set lbr " line break
-set scrolloff=5 " show lines above and below cursor (when possible)
-"" set noshowmode " hide mode
-set laststatus=2
-set backspace=indent,eol,start " allow backspacing over everything
-set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
-set lazyredraw " skip redrawing screen in some cases
-set autochdir " automatically set current directory to directory of last opened file
-set hidden " allow auto-hiding of edited buffers
-set history=8192 " more history
-set nojoinspaces " suppress inserting two spaces between sentences
-" use 4 spaces instead of tabs during formatting
-" smart case-sensitive search
+" Automatically set current directory to directory of last opened file
+set autochdir
+
+" Allow more history
+set history=8192
+
+"------------------------------------------------------------
+" Usability options:
+"
+" These are options that users frequently set in their .vimrc. Some of them
+" change Vim's behaviour in ways which deviate from the true Vi way, but
+" which are considered to add usability. Which, if any, of these options to
+" use is very much a personal preference, but they are harmless.
+
+" Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
-" tab completion for files/bufferss
-set wildmode=longest,list
-set wildmenu
-set mouse+=a " enable mouse mode (scrolling, selection, etc)
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs, etc.
+set autoindent
+
+" Stop certain movements from always going to the first character of a line.
+" While this behaviour deviates from that of Vi, it does what most users
+" coming from other editors would expect.
+set nostartofline
+
+" Display the cursor position on the last line of the screen or in the status
+" line of a window
+set ruler
+
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+
+" Instead of failing a command because of unsaved changes, instead raise a
+" dialogue asking if you wish to save changed files.
+set confirm
+
+" Use visual bell instead of beeping when doing something wrong
+set visualbell
+
+" And reset the terminal code for the visual bell. If visualbell is set, and
+" this line is also included, vim will neither flash nor beep. If visualbell
+" is unset, this does nothing.
+set t_vb=
+
+" Enable use of the mouse for all modes
+if has('mouse')
+  set mouse=a
+endif
+
+" Set the command window height to 2 lines, to avoid many cases of having to
+" "press <Enter> to continue"
+set cmdheight=2
+
+" Display line numbers on the left
+set number
+
+" Display relative line numbers on left
+set rnu
+
+" Quickly time out on keycodes, but never time out on mappings
+set notimeout ttimeout ttimeoutlen=200
+
+" Use <F11> to toggle between 'paste' and 'nopaste'
+set pastetoggle=<F11>
+
+
+"------------------------------------------------------------
+" Indentation options:
+"
+" Indentation settings according to personal preference.
+
+" Indentation settings for using 4 spaces instead of tabs.
+" Do not change 'tabstop' from its default value of 8 with this setup.
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+" Indentation settings for using hard tabs for indent. Display tabs as
+" four characters wide.
+set shiftwidth=4
+set tabstop=4
+
+
+"------------------------------------------------------------
+" Mappings:
+"
+" Useful mappings
+
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
+" which is the default
+map Y y$
+
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+nnoremap <C-L> :nohl<CR><C-L>
+
+"------------------------------------------------------------
+" Visual options:
+"
+
+" Enable 256-color mode
+set t_Co=256
+
+" Don't allow text to wrap to next line
+set nowrap
+
+" Set list to see tabs and non-breakable spaces
+set listchars=tab:>>,nbsp:~
+
+" Show lines above and below cursor when possible
+set scrolloff=5
+
+" Skip redrawing screen when running macros and in other cases
+set lazyredraw
+
+" Apply colorscheme
+colorscheme industry 
+
