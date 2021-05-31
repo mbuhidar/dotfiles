@@ -24,11 +24,11 @@ alias chgrp='chgrp --preserve-root'
 
 # Control cd command behavior
 alias ..='cd ..'
-alias ...='cd ../../../'
-alias ....='cd ../../../../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
 alias .....='cd ../../../../'
 alias .4='cd ../../../../'
-alias .5='cd ../../../../..'
+alias .5='cd ../../../../../'
 
 
 # Other aliases added via echo on command line

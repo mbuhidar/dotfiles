@@ -21,6 +21,13 @@ if has('syntax')
 endif
 
 "------------------------------------------------------------
+" Plugins:
+"
+"Plugin 'morhetz/gruvbox'
+
+
+" Must have options:
+"------------------------------------------------------------
 " Must have options:
 "
 " Vim with default settings does not allow easy switching between multiple files
@@ -166,6 +173,9 @@ map Y y$
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 
+" Map jj to <Esc> to exit INSERT mode
+" inoremap jj <Esc>
+
 "------------------------------------------------------------
 " Visual options:
 "
@@ -186,5 +196,6 @@ set scrolloff=5
 set lazyredraw
 
 " Apply colorscheme
-colorscheme industry 
+colorscheme torte 
+"set backgroundcolor=dark
 
