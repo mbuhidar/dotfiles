@@ -186,6 +186,9 @@ set t_Co=256
 " Don't allow text to wrap to next line
 set nowrap
 
+" Set color column
+set colorcolumn=81
+
 " Set list to see tabs and non-breakable spaces
 set listchars=tab:>>,nbsp:~
 
