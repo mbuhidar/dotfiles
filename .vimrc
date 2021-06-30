@@ -176,6 +176,8 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Map jj to <Esc> to exit INSERT mode
 " inoremap jj <Esc>
 
+imap ii <Esc>
+
 "------------------------------------------------------------
 " Visual options:
 "
@@ -187,7 +189,7 @@ set t_Co=256
 set nowrap
 
 " Set color column
-set colorcolumn=81
+set colorcolumn=80
 
 " Set list to see tabs and non-breakable spaces
 set listchars=tab:>>,nbsp:~
