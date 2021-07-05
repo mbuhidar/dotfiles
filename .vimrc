@@ -142,6 +142,8 @@ set notimeout ttimeout ttimeoutlen=200
 " Use <F11> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F11>
 
+" Set clipboard to unnamed
+set clipboard=unnamed
 
 "------------------------------------------------------------
 " Indentation options:
