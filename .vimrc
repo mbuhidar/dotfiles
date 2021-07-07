@@ -178,7 +178,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Map jj to <Esc> to exit INSERT mode
 " inoremap jj <Esc>
 
-imap ii <Esc>
+imap jj <Esc>
 
 "------------------------------------------------------------
 " Visual options:
